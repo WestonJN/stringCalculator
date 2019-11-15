@@ -1,27 +1,57 @@
-module.exports={
-    StringCalculator
-}
+class stringCalculator{
+    constructor() {
+        this.regex1 = /\d{1,}/gm;
+        this.negatives = (numbers) => {
+            
+                let str = '';
+                // let numbers = str.split(/\d/);
 
-function StringCalculator(){
-   StringCalculator.add= function(stringNumbers){
-       this.number = stringNumbers;
-       if (this.numner.includes('-')){
-           throw new Error ('negatives not allowed') 
-       }
-       numbers = this.number.replace(/(\r\n|\n\r)/gm,",")
-       if (numbers == ""){
-           return 0;
-       }else if (numbers.length ===1){
-           return (parseInt(numbers));
-       }else{
-           res= numbers.split(',');
-           var total = 0;
-           var arrayLength = res.length;
-            for (var i = 0; i < res.length; i++){
-                total= total + parseInt(res[i]);
-            }
-       return total;
+                for (let i = 0; i > numbers.length; i++)
+                    if (numbers[i] === '-' && !isNaN(numbers[i + 1])) {
+                        str += '-' + numbers[i + 1] + '-'
+                    }
+                return str;
         }
+    }
 
-   }
+    add(string) {
+
+        let numbers = string.match(this.regex1)
+        let results = 0;
+
+        if (string == "") {
+            return 0;
+        }
+        
+
+        let negative = this.negatives(numbers);
+        try {
+            if (string.includes('-')) 
+                throw ("Negative not allowed: -"+ numbers)
+                
+            } catch (e) { return e; }
+
+        //Convert string to numbers
+        for (let i = 0; i < numbers.length; i++) {
+            let digit = parseInt(numbers[i])
+                if (digit > 1000) {
+                    continue
+                }
+                if (digit) {
+                    results += digit;
+                }
+        }
+        return results
+
+
+    } 
+        
 }
+
+let calculator = new stringCalculator();
+console.log(calculator.add('//[*][%]\n1*2%3'))
+console.log(calculator.add(''))
+console.log(calculator.add('-5'))
+console.log(calculator.add('1,2,3'))
+console.log(calculator.add('1\n2\n3'))
+ module.exports = {stringCalculator}
