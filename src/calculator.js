@@ -1,16 +1,16 @@
 class stringCalculator{
    
     negatives(string) {
-		let str = '';
+		let num = '';
 		let numbers = string.split(/\D/);
 
 		for (var i = 0; i < string.length; i++) {
 			if (string[i] == '-' && !isNaN(string[i+1])) {
-				str += numbers[i+1] +' ';
+			 num += numbers[i+1] +' ';
 			}
 		}
 
-		return str;
+		return num;
 	}
 
     
@@ -27,7 +27,7 @@ class stringCalculator{
 
 			
 		 	if (negatives) {
-		 		throw('Negative ' + negatives + 'not allowed');
+		 		throw('Negative not allowed: -' + negatives);
 			}
 
 			
