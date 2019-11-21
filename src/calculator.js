@@ -23,15 +23,15 @@ class stringCalculator{
 		for (let i = 0; i < numbers.length; i++) {
 			
 			let number = parseInt(numbers[i]); 
-
-			
+				
+		
 		 	if (negatives) {
 		 		throw 'Negative not allowed: -'+ negatives;
 			}
 
 			
 		 	if (number >= 1000) {
-		 	  number = 0
+		 	  number = 0;
 			}
 			
 		 	if (number) {
@@ -48,5 +48,5 @@ class stringCalculator{
 
 let calculator = new stringCalculator();
 console.log(calculator.add('//[*][%]\n1*2%3'));
-console.log(calculator.add(''));
+console.log(calculator.add('-5,-2'));
  module.exports = {stringCalculator}

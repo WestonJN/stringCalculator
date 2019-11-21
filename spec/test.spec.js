@@ -19,6 +19,10 @@ describe("String calculator should", function () {
       expect(calculator.add("1\n2\n3")).toEqual(6);
     });
 
+    it("Throw an exception that doesnt allow negative numbers", () => {
+      expect(calculator.add("-5,-1")).toEqual(-6);
+        });
+
     it("Ignore numbers greater or equal to 1000", () => {
       expect(calculator.add("1000,1")).toEqual(1);
         });
