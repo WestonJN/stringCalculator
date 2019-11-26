@@ -2,11 +2,11 @@ class stringCalculator{
 
     negatives(string) {
 		let str = '';
-		let numbers = string.split(/\D/);
+		let numbers = string.split(',');
 
-		for (var i = 0; i < string.length; i++) {
-			if (string[i] === '-' && !isNaN(string[i+1])) {
-				str += numbers[i+1] +' ';
+		for (var i = 0; i < numbers.length; i++) {
+			if (numbers[i][0] == '-') {
+				str += numbers[i] +' ';
 			}
 		}
 
@@ -20,16 +20,14 @@ class stringCalculator{
 
 		numbers = numbers.split(/\D/);
 
+		if (negatives) {
+			throw new Error('Negative not allowed: '+ negatives);
+	   	}	
+
 		for (let i = 0; i < numbers.length; i++) {
 			
 			let number = parseInt(numbers[i]); 
-				
-		
-		 	if (negatives) {
-		 		throw 'Negative not allowed: -'+ negatives;
-			}
 
-			
 		 	if (number >= 1000) {
 		 	  number = 0;
 			}
@@ -45,8 +43,4 @@ class stringCalculator{
       
 }
 
-
-let calculator = new stringCalculator();
-console.log(calculator.add('//[*][%]\n1*2%3'));
-console.log(calculator.add('-5,-2'));
  module.exports = {stringCalculator}

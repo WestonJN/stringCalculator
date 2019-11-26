@@ -1,7 +1,7 @@
-var calculator = require('../src/calculator');
+var {stringCalculator} = require('../src/calculator');
 
 describe("String calculator should", function () {
-   let calculator = new stringCalculator;
+   let calculator = new stringCalculator();
 
     it(" equal to zero", function () {
         expect(calculator.add("")).toEqual(0);
@@ -20,7 +20,7 @@ describe("String calculator should", function () {
     });
 
     it("Throw an exception that doesnt allow negative numbers", () => {
-      expect(calculator.add("-5,-1")).toEqual(-6);
+      expect(() => {calculator.add("-5,-1")}).toThrowError('Negative not allowed: -5 -1 ');
         });
 
     it("Ignore numbers greater or equal to 1000", () => {
